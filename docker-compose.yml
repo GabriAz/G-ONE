@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      TZ: America/Sao_Paulo
+    ports:
+      - "3005:3005"
+    networks:
+      - controle_default
+    restart: unless-stopped
+
+networks:
+  controle_default:
+    external: true
